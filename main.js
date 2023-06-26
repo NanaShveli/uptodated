@@ -82,7 +82,22 @@ function topFunction() {
 
 
 
+ document.getElementById("sendButton").addEventListener("click", function() {
+  var nameInput = document.getElementById("name").value;
+  var emailInput = document.getElementById("email").value;
+  var messageInput = document.getElementById("message").value;
 
+  // Perform form validation
+  if (nameInput.trim() === "" || emailInput.trim() === "" || messageInput.trim() === "") {
+    alert("Please fill in all the fields.");
+    return;
+  }
 
+  // Create a mailto link
+  var mailtoLink = "mailto:shvelidzen@yahoo.com" +
+    "?subject=" + encodeURIComponent("New message from website") +
+    "&body=" + encodeURIComponent("Name: " + nameInput + "\n\nEmail: " + emailInput + "\n\nMessage: " + messageInput);
 
-
+  // Open the user's email client with the mailto link
+  window.location.href = mailtoLink;
+});
