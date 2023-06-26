@@ -81,7 +81,10 @@ function topFunction() {
  }
 
 
- 
+
+
+
+
 
  document.getElementById("sendButton").addEventListener("click", function() {
   var nameInput = document.getElementById("name").value;
@@ -97,5 +100,15 @@ function topFunction() {
     "?subject=" + encodeURIComponent("New message from website") +
     "&body=" + encodeURIComponent("Name: " + nameInput + "\n\nEmail: " + emailInput + "\n\nMessage: " + messageInput);
 
-  window.location.href = mailtoLink;
+  var tempLink = document.createElement("a");
+  tempLink.href = mailtoLink;
+  tempLink.target = "_blank";
+  tempLink.style.display = "none";
+  document.body.appendChild(tempLink);
+  tempLink.click();
+  document.body.removeChild(tempLink);
 });
+
+
+
+
